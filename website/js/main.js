@@ -1,6 +1,6 @@
 /**
- * Intellij Lorapok — Premium Website JavaScript
- * Loading screen, scroll reveal, FAQ, navigation
+ * Intellij Lorapok — Lucien-Inspired Website JavaScript
+ * Loading screen, scroll reveal, FAQ accordion, navigation
  */
 
 (function () {
@@ -32,14 +32,12 @@
 
     let current = 0;
     const target = 100;
-    const duration = 2200; // ms
+    const duration = 2000;
     const startTime = performance.now();
 
     function updateCounter(timestamp) {
       const elapsed = timestamp - startTime;
       const progress = Math.min(elapsed / duration, 1);
-
-      // Eased progress (ease-out cubic)
       const eased = 1 - Math.pow(1 - progress, 3);
       current = Math.floor(eased * target);
 
@@ -54,17 +52,15 @@
         counter.textContent = '100';
         if (barFill) barFill.style.width = '100%';
 
-        // Brief pause at 100, then reveal
         setTimeout(function () {
           loader.classList.add('done');
           siteContent.classList.add('visible');
           siteContent.setAttribute('aria-hidden', 'false');
 
-          // Remove loader from DOM after transition
           setTimeout(function () {
             loader.remove();
           }, 700);
-        }, 400);
+        }, 350);
       }
     }
 
@@ -89,7 +85,7 @@
           }
         });
       },
-      { threshold: 0.08, rootMargin: '0px 0px -60px 0px' }
+      { threshold: 0.08, rootMargin: '0px 0px -50px 0px' }
     );
 
     document.querySelectorAll('.reveal').forEach(function (el) {
@@ -99,39 +95,39 @@
 
   /** FAQ Accordion */
   function initFAQ() {
-    var items = document.querySelectorAll('.faq-item');
+    var cards = document.querySelectorAll('.faq-card');
 
-    items.forEach(function (item) {
-      var trigger = item.querySelector('.faq-question');
+    cards.forEach(function (card) {
+      var trigger = card.querySelector('.faq-trigger');
       if (!trigger) return;
 
       trigger.addEventListener('click', function () {
-        toggleFAQ(item, items);
+        toggleFAQ(card, cards);
       });
 
       trigger.addEventListener('keydown', function (e) {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
-          toggleFAQ(item, items);
+          toggleFAQ(card, cards);
         }
       });
     });
   }
 
-  function toggleFAQ(item, allItems) {
-    var isActive = item.classList.contains('active');
+  function toggleFAQ(card, allCards) {
+    var isActive = card.classList.contains('active');
 
     // Close all
-    allItems.forEach(function (i) {
-      i.classList.remove('active');
-      var btn = i.querySelector('.faq-question');
+    allCards.forEach(function (c) {
+      c.classList.remove('active');
+      var btn = c.querySelector('.faq-trigger');
       if (btn) btn.setAttribute('aria-expanded', 'false');
     });
 
     // Open if wasn't active
     if (!isActive) {
-      item.classList.add('active');
-      var btn = item.querySelector('.faq-question');
+      card.classList.add('active');
+      var btn = card.querySelector('.faq-trigger');
       if (btn) btn.setAttribute('aria-expanded', 'true');
     }
   }
@@ -140,12 +136,12 @@
   function initNavigation() {
     var nav = document.querySelector('.nav');
     var toggle = document.querySelector('.nav-toggle');
-    var links = document.querySelector('.nav-links');
+    var mobileNav = document.querySelector('.mobile-nav');
 
     // Scroll effect
     var scrolled = false;
     window.addEventListener('scroll', function () {
-      var shouldBeScrolled = window.scrollY > 80;
+      var shouldBeScrolled = window.scrollY > 60;
       if (shouldBeScrolled !== scrolled) {
         scrolled = shouldBeScrolled;
         nav.classList.toggle('scrolled', scrolled);
@@ -162,7 +158,10 @@
         if (target) {
           target.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth' });
           // Close mobile menu
-          if (links) links.classList.remove('open');
+          if (mobileNav) {
+            mobileNav.classList.remove('open');
+            mobileNav.setAttribute('aria-hidden', 'true');
+          }
           if (toggle) {
             toggle.classList.remove('active');
             toggle.setAttribute('aria-expanded', 'false');
@@ -172,23 +171,47 @@
     });
 
     // Mobile toggle
-    if (toggle && links) {
+    if (toggle && mobileNav) {
       toggle.addEventListener('click', function () {
-        var isOpen = links.classList.toggle('open');
+        var isOpen = mobileNav.classList.toggle('open');
         toggle.classList.toggle('active');
         toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        mobileNav.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
       });
     }
   }
 
+  /** Parallax-like subtle effects on scroll */
+  function initParallax() {
+    if (prefersReducedMotion) return;
+
+    var heroGradient = document.querySelector('.hero-gradient');
+    var footerText = document.querySelector('.footer-giant-text');
+
+    window.addEventListener('scroll', function () {
+      var scrollY = window.scrollY;
+
+      if (heroGradient && scrollY < window.innerHeight) {
+        heroGradient.style.transform = 'translate(-50%, calc(-50% + ' + (scrollY * 0.1) + 'px))';
+      }
+
+      if (footerText) {
+        var rect = footerText.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          var progress = 1 - (rect.top / window.innerHeight);
+          footerText.style.transform = 'translateY(' + (20 - progress * 25) + '%)';
+        }
+      }
+    }, { passive: true });
+  }
+
   /** Initialize */
-  // Start loader immediately
   initLoader();
 
-  // Init rest on DOM ready
   document.addEventListener('DOMContentLoaded', function () {
     initScrollReveal();
     initFAQ();
     initNavigation();
+    initParallax();
   });
 })();

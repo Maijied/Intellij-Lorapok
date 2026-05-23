@@ -47,7 +47,7 @@
   <!-- Preconnect to font origins -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Favicon -->
   <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
@@ -61,7 +61,7 @@
       .loader { display: none !important; }
       .site-content { opacity: 1 !important; }
       .reveal { opacity: 1 !important; transform: none !important; }
-      .faq-answer { max-height: none !important; overflow: visible !important; padding: 1rem 0 !important; }
+      .faq-answer { max-height: none !important; overflow: visible !important; padding: 1rem 1.5rem !important; }
     </style>
   </noscript>
 </head>
@@ -80,269 +80,330 @@
     </div>
   </div>
 
-  <!-- Site Content (hidden until loader completes) -->
+  <!-- Site Content -->
   <div class="site-content" aria-hidden="true">
 
     <!-- Navigation -->
     <header class="nav" role="banner">
-      <a href="#" class="nav-logo" aria-label="Lorapok home">
-        <img src="assets/logo.svg" alt="Lorapok" width="120" height="28">
+      <a href="#" class="nav-left" aria-label="About Lorapok">
+        <span class="nav-arrow">→</span> About
       </a>
-      <nav role="navigation" aria-label="Main navigation">
-        <ul class="nav-links">
-          <li><a href="#mission">Mission</a></li>
-          <li><a href="#solution">Solution</a></li>
-          <li><a href="#how-it-works">How it Works</a></li>
-          <li><a href="#faq">FAQ</a></li>
-        </ul>
-      </nav>
-      <a href="https://plugins.jetbrains.com/vendor/lorapok-labs" class="btn btn-nav" target="_blank" rel="noopener">Get Plugin</a>
+      <a href="#" class="nav-logo" aria-label="Lorapok home">
+        <svg class="nav-logo-icon" width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <rect x="2" y="2" width="28" height="28" rx="6" stroke="#00ff88" stroke-width="2"/>
+          <rect x="8" y="8" width="16" height="16" rx="3" fill="#00ff88" opacity="0.3"/>
+          <rect x="12" y="12" width="8" height="8" rx="2" fill="#00ff88"/>
+        </svg>
+      </a>
+      <a href="https://plugins.jetbrains.com/vendor/lorapok-labs" class="nav-cta" target="_blank" rel="noopener">Get Plugin</a>
       <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </header>
+
+    <!-- Mobile Nav -->
+    <nav class="mobile-nav" role="navigation" aria-label="Mobile navigation" aria-hidden="true">
+      <ul>
+        <li><a href="#problem">The Problem</a></li>
+        <li><a href="#solution">Solution</a></li>
+        <li><a href="#transformation">Transformation</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="https://plugins.jetbrains.com/vendor/lorapok-labs" target="_blank" rel="noopener">Get Plugin</a></li>
+      </ul>
+    </nav>
 
     <main id="main">
       <!-- Hero Section -->
       <section class="hero" aria-labelledby="hero-heading">
         <div class="hero-bg" aria-hidden="true">
           <div class="hero-gradient"></div>
-          <div class="hero-grid-lines"></div>
+          <div class="hero-grid"></div>
         </div>
-
-        <div class="hero-content">
+        <div class="hero-content reveal">
           <h1 id="hero-heading" class="hero-title">
+            <span class="hero-line">The Open-Source</span>
             <span class="hero-line">AI Agent IDE</span>
-            <span class="hero-line">That Codes <em>With You</em></span>
+            <span class="hero-line accent">for JetBrains</span>
           </h1>
-          <h1 class="hero-title hero-title-ghost" aria-hidden="true">
-            <span class="hero-line">AI Agent IDE</span>
-            <span class="hero-line">That Codes <em>With You</em></span>
-          </h1>
+          <p class="hero-sub">Multi-provider intelligence. Sub-agent orchestration. 44 AI powers. Zero cost.</p>
         </div>
-
-        <!-- Floating Badges -->
-        <div class="hero-badges" aria-label="Key capabilities">
-          <span class="pill pill-1">44 AI Powers</span>
-          <span class="pill pill-2">Multi-Agent</span>
-          <span class="pill pill-3">MCP Protocol</span>
-          <span class="pill pill-4">Free LLM Access</span>
-        </div>
-
-        <div class="hero-scroll-hint" aria-hidden="true">
-          <span>Scroll</span>
-          <div class="scroll-line"></div>
-        </div>
-      </section>
-
-      <!-- Trusted By / Marquee -->
-      <section class="marquee-section" aria-label="Supported platforms and technologies">
-        <div class="marquee-track">
-          <div class="marquee-content">
-            <span class="marquee-item">IntelliJ IDEA</span>
-            <span class="marquee-divider">◆</span>
-            <span class="marquee-item">WebStorm</span>
-            <span class="marquee-divider">◆</span>
-            <span class="marquee-item">PyCharm</span>
-            <span class="marquee-divider">◆</span>
-            <span class="marquee-item">GoLand</span>
-            <span class="marquee-divider">◆</span>
-            <span class="marquee-item">Android Studio</span>
-            <span class="marquee-divider">◆</span>
-            <span class="marquee-item">PhpStorm</span>
-            <span class="marquee-divider">◆</span>
-            <span class="marquee-item">RubyMine</span>
-            <span class="marquee-divider">◆</span>
-            <span class="marquee-item">CLion</span>
-            <span class="marquee-divider">◆</span>
-            <span class="marquee-item">Rider</span>
-            <span class="marquee-divider">◆</span>
-          </div>
-          <div class="marquee-content" aria-hidden="true">
-            <span class="marquee-item">IntelliJ IDEA</span>
-            <span class="marquee-divider">◆</span>
-            <span class="marquee-item">WebStorm</span>
-            <span class="marquee-divider">◆</span>
-            <span class="marquee-item">PyCharm</span>
-            <span class="marquee-divider">◆</span>
-            <span class="marquee-item">GoLand</span>
-            <span class="marquee-divider">◆</span>
-            <span class="marquee-item">Android Studio</span>
-            <span class="marquee-divider">◆</span>
-            <span class="marquee-item">PhpStorm</span>
-            <span class="marquee-divider">◆</span>
-            <span class="marquee-item">RubyMine</span>
-            <span class="marquee-divider">◆</span>
-            <span class="marquee-item">CLion</span>
-            <span class="marquee-divider">◆</span>
-            <span class="marquee-item">Rider</span>
-            <span class="marquee-divider">◆</span>
-          </div>
-        </div>
-      </section>
-
-      <!-- The Mission -->
-      <section id="mission" class="section-mission" aria-labelledby="mission-heading">
-        <div class="container">
-          <div class="reveal">
-            <p class="section-label">The Mission</p>
-            <h2 id="mission-heading" class="mission-text">
-              Every developer deserves a powerful AI coding partner — not locked behind expensive subscriptions or closed ecosystems.
-            </h2>
-            <p class="mission-sub">We're building the open-source AI agent IDE that gives every developer access to multi-provider intelligence, sub-agent orchestration, and extensible powers — completely free.</p>
-          </div>
+        <div class="hero-scroll" aria-hidden="true">
+          <div class="hero-scroll-line"></div>
         </div>
       </section>
 
       <!-- The Problem -->
-      <section class="section-problem" aria-labelledby="problem-heading">
+      <section id="problem" class="section" aria-labelledby="problem-heading">
         <div class="container">
-          <div class="section-header reveal">
-            <p class="section-label">The Problem</p>
-            <h2 id="problem-heading">AI IDEs are holding developers back</h2>
+          <!-- Section Badge -->
+          <div class="section-badge-wrapper reveal">
+            <span class="section-badge">The Problem</span>
+            <div class="section-badge-line"></div>
           </div>
-          <div class="problem-grid">
+          <h2 id="problem-heading" class="section-title reveal">AI IDEs are holding developers back</h2>
+
+          <div class="problem-cards">
             <article class="problem-card reveal" style="--delay: 0s">
-              <div class="problem-card-accent"></div>
-              <div class="problem-card-content">
-                <span class="problem-stat">78%</span>
-                <h3>Closed Ecosystems</h3>
-                <p>of AI coding tools lock you into a single provider with no escape hatch. Your workflow depends on one company's decisions.</p>
+              <div class="problem-card-visual">
+                <div class="floating-pills">
+                  <span class="fp fp-1">AI Agent</span>
+                  <span class="fp fp-2">Sub-Agent</span>
+                  <span class="fp fp-3">Locked</span>
+                  <span class="fp fp-4">Vendor API</span>
+                </div>
+                <div class="visual-glow glow-red"></div>
               </div>
+              <h3 class="problem-card-title">Closed Ecosystems</h3>
+              <p class="problem-card-desc">78% of AI coding tools lock you into a single provider with no escape hatch. Your workflow depends on one company's decisions.</p>
             </article>
+
             <article class="problem-card reveal" style="--delay: 0.15s">
-              <div class="problem-card-accent"></div>
-              <div class="problem-card-content">
-                <span class="problem-stat">$20–50</span>
-                <h3>Expensive Access</h3>
-                <p>per month per developer for premium AI features. Teams pay thousands for capabilities that should be accessible to everyone.</p>
+              <div class="problem-card-visual">
+                <div class="floating-pills">
+                  <span class="fp fp-5">$20/mo</span>
+                  <span class="fp fp-6">$50/mo</span>
+                  <span class="fp fp-7">Premium</span>
+                  <span class="fp fp-8">Enterprise</span>
+                </div>
+                <div class="visual-glow glow-orange"></div>
               </div>
+              <h3 class="problem-card-title">Expensive Access</h3>
+              <p class="problem-card-desc">$20–50 per month per developer for premium AI features. Teams pay thousands for capabilities that should be accessible to everyone.</p>
             </article>
+
             <article class="problem-card reveal" style="--delay: 0.3s">
-              <div class="problem-card-accent"></div>
-              <div class="problem-card-content">
-                <span class="problem-stat">0</span>
-                <h3>Limited Extensibility</h3>
-                <p>No MCP, no custom tools, no workflow automation. You get what they ship — nothing more.</p>
+              <div class="problem-card-visual">
+                <div class="floating-pills">
+                  <span class="fp fp-9">No MCP</span>
+                  <span class="fp fp-10">No Tools</span>
+                  <span class="fp fp-11">Static</span>
+                  <span class="fp fp-12">Closed</span>
+                </div>
+                <div class="visual-glow glow-purple"></div>
               </div>
+              <h3 class="problem-card-title">Limited Extensibility</h3>
+              <p class="problem-card-desc">No MCP, no custom tools, no workflow automation. You get what they ship — nothing more.</p>
             </article>
           </div>
         </div>
       </section>
 
       <!-- The Solution -->
-      <section id="solution" class="section-solution" aria-labelledby="solution-heading">
+      <section id="solution" class="section" aria-labelledby="solution-heading">
         <div class="container">
-          <div class="section-header reveal">
-            <p class="section-label">The Solution</p>
-            <h2 id="solution-heading">That's why we built <span class="text-accent">Intellij Lorapok</span></h2>
-            <p class="section-desc">The Open-Source AI Agent IDE</p>
+          <div class="section-badge-wrapper reveal">
+            <span class="section-badge">The Solution</span>
+            <div class="section-badge-line"></div>
           </div>
-          <div class="solution-grid">
-            <div class="solution-item reveal" style="--delay: 0s">
-              <div class="solution-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12l2 2 4-4"/></svg>
+          <h2 id="solution-heading" class="section-title reveal">That's why we built <span class="text-accent">Lorapok</span>, the Open-Source AI Agent IDE</h2>
+
+          <!-- Flow Diagram -->
+          <div class="flow-diagram reveal">
+            <div class="flow-left">
+              <span class="flow-pill">Prompt</span>
+              <span class="flow-pill">Code</span>
+              <span class="flow-pill">Context</span>
+              <span class="flow-pill">Memory</span>
+            </div>
+            <div class="flow-center">
+              <div class="flow-node flow-node-lorapok">
+                <svg width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+                  <rect x="4" y="4" width="24" height="24" rx="5" stroke="#00ff88" stroke-width="2"/>
+                  <rect x="10" y="10" width="12" height="12" rx="2" fill="#00ff88"/>
+                </svg>
+              </div>
+              <div class="flow-connector">
+                <svg class="flow-arrow-svg" viewBox="0 0 80 20" aria-hidden="true">
+                  <path d="M0 10 H70 M65 5 L75 10 L65 15" stroke="#00ff88" stroke-width="1.5" fill="none" opacity="0.6"/>
+                </svg>
+              </div>
+              <div class="flow-node flow-node-ai">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10" stroke="#7c5cfc" stroke-width="1.5"/>
+                  <path d="M8 12l2 2 4-4" stroke="#7c5cfc" stroke-width="1.5" fill="none"/>
+                </svg>
+              </div>
+              <div class="flow-connector">
+                <svg class="flow-arrow-svg" viewBox="0 0 80 20" aria-hidden="true">
+                  <path d="M0 10 H70 M65 5 L75 10 L65 15" stroke="#00ff88" stroke-width="1.5" fill="none" opacity="0.6"/>
+                </svg>
+              </div>
+              <div class="flow-node flow-node-lorapok">
+                <svg width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+                  <rect x="4" y="4" width="24" height="24" rx="5" stroke="#00ff88" stroke-width="2"/>
+                  <rect x="10" y="10" width="12" height="12" rx="2" fill="#00ff88"/>
+                </svg>
+              </div>
+            </div>
+            <div class="flow-right">
+              <span class="flow-pill">Generation</span>
+              <span class="flow-pill">Refactoring</span>
+              <span class="flow-pill">Testing</span>
+              <span class="flow-pill">Deployment</span>
+            </div>
+          </div>
+
+          <!-- Benefit Cards -->
+          <div class="benefit-cards reveal">
+            <div class="benefit-card">
+              <div class="benefit-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="4"/></svg>
               </div>
               <h3>Multi-Provider Freedom</h3>
-              <p>Use any AI: OpenAI, Claude, Gemini, Groq, Ollama, and more. Switch providers anytime — no lock-in.</p>
+              <p>Use any AI: OpenAI, Claude, Gemini, Groq, Ollama, and more. Switch providers anytime.</p>
             </div>
-            <div class="solution-item reveal" style="--delay: 0.15s">
-              <div class="solution-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="4"/></svg>
+            <div class="benefit-card">
+              <div class="benefit-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12l2 2 4-4"/></svg>
               </div>
               <h3>Zero-Cost Operation</h3>
-              <p>Free LLM providers give you full agent power at no cost. Groq, Cerebras, Google AI Studio — all free tier compatible.</p>
+              <p>Free LLM providers give you full agent power at no cost. Groq, Cerebras, Google AI Studio.</p>
             </div>
-            <div class="solution-item reveal" style="--delay: 0.3s">
-              <div class="solution-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="M9 9h6v6H9z"/><path d="M9 2v2M15 2v2M9 20v2M15 20v2M2 9h2M2 15h2M20 9h2M20 15h2"/></svg>
+            <div class="benefit-card">
+              <div class="benefit-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9z"/><path d="M9 2v2M15 2v2M9 20v2M15 20v2M2 9h2M2 15h2M20 9h2M20 15h2"/></svg>
               </div>
               <h3>Infinite Extensibility</h3>
-              <p>MCP protocol, custom powers, workflow engine, extensions API. Build anything on top of Lorapok.</p>
+              <p>MCP protocol, custom powers, workflow engine, extensions API. Build anything on top.</p>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- How It Works -->
-      <section id="how-it-works" class="section-how" aria-labelledby="how-heading">
+      <!-- Transformation / Dashboard -->
+      <section id="transformation" class="section" aria-labelledby="transform-heading">
         <div class="container">
-          <div class="section-header reveal">
-            <p class="section-label">How It Works</p>
-            <h2 id="how-heading">Intelligent by design</h2>
+          <div class="section-badge-wrapper reveal">
+            <span class="section-badge">Transformation</span>
+            <div class="section-badge-line"></div>
           </div>
-          <div class="how-grid">
-            <div class="how-item reveal" style="--delay: 0s">
-              <span class="how-number">01</span>
-              <h3>Sub-Agent Orchestration</h3>
-              <p>5 concurrent agents decompose and solve complex tasks in parallel</p>
-            </div>
-            <div class="how-item reveal" style="--delay: 0.1s">
-              <span class="how-number">02</span>
-              <h3>Context Intelligence</h3>
-              <p>Semantic codebase indexing with relevance-ranked context assembly</p>
-            </div>
-            <div class="how-item reveal" style="--delay: 0.2s">
-              <span class="how-number">03</span>
-              <h3>Workflow Automation</h3>
-              <p>n8n-style visual pipelines with triggers, conditions, and AI nodes</p>
-            </div>
-            <div class="how-item reveal" style="--delay: 0.3s">
-              <span class="how-number">04</span>
-              <h3>Cloud Knowledge</h3>
-              <p>Deep AWS, Azure, and GitHub expertise built into every response</p>
-            </div>
-          </div>
-        </div>
-      </section>
+          <h2 id="transform-heading" class="section-title reveal">Your IDE, supercharged</h2>
 
-      <!-- Transformation / Dashboard Preview -->
-      <section class="section-transform" aria-labelledby="transform-heading">
-        <div class="container">
-          <div class="section-header reveal">
-            <p class="section-label">The Experience</p>
-            <h2 id="transform-heading">Your IDE, supercharged</h2>
-          </div>
-          <div class="transform-preview reveal">
-            <div class="preview-window">
-              <div class="preview-titlebar">
-                <span class="preview-dot"></span>
-                <span class="preview-dot"></span>
-                <span class="preview-dot"></span>
-                <span class="preview-title">Intellij Lorapok — Agent Panel</span>
+          <!-- Dashboard Mockup -->
+          <div class="dashboard-mockup reveal">
+            <div class="dashboard-window">
+              <div class="dashboard-titlebar">
+                <span class="dot dot-red"></span>
+                <span class="dot dot-yellow"></span>
+                <span class="dot dot-green"></span>
+                <span class="dashboard-title-text">Intellij Lorapok — Agent Panel</span>
               </div>
-              <div class="preview-body">
-                <div class="preview-sidebar">
-                  <div class="preview-sidebar-item active">Chat</div>
-                  <div class="preview-sidebar-item">Agents</div>
-                  <div class="preview-sidebar-item">Powers</div>
-                  <div class="preview-sidebar-item">Workflows</div>
-                </div>
-                <div class="preview-main">
-                  <div class="preview-message preview-message-user">Refactor this service to use dependency injection</div>
-                  <div class="preview-message preview-message-agent">
-                    <span class="preview-agent-label">Agent</span>
-                    Analyzing service structure... Spawning 3 sub-agents for parallel refactoring.
+              <div class="dashboard-body">
+                <!-- Sidebar -->
+                <aside class="dashboard-sidebar">
+                  <div class="sidebar-item active" data-num="01">
+                    <span class="sidebar-icon">💬</span> Chat
                   </div>
-                  <div class="preview-status">
-                    <span class="preview-status-dot"></span>
-                    3 sub-agents active · Context: 12 files indexed
+                  <div class="sidebar-item" data-num="02">
+                    <span class="sidebar-icon">🤖</span> Agents
+                  </div>
+                  <div class="sidebar-item" data-num="03">
+                    <span class="sidebar-icon">⚡</span> Powers
+                  </div>
+                  <div class="sidebar-item" data-num="04">
+                    <span class="sidebar-icon">🔄</span> Workflows
+                  </div>
+                  <div class="sidebar-item" data-num="05">
+                    <span class="sidebar-icon">🧠</span> Memory
+                  </div>
+                  <div class="sidebar-item" data-num="06">
+                    <span class="sidebar-icon">⚙️</span> Settings
+                  </div>
+                </aside>
+                <!-- Main Content -->
+                <div class="dashboard-main">
+                  <div class="dashboard-header-bar">
+                    <h4>POWERS</h4>
+                    <span class="dashboard-badge">44 Active</span>
+                  </div>
+                  <div class="dashboard-table">
+                    <div class="table-header">
+                      <span>Power</span>
+                      <span>Type</span>
+                      <span>Status</span>
+                      <span>Provider</span>
+                      <span>Actions</span>
+                    </div>
+                    <div class="table-row">
+                      <span class="table-name">Code Generation</span>
+                      <span class="table-type">Agent</span>
+                      <span class="table-status status-active">Active</span>
+                      <span class="table-provider">Multi</span>
+                      <span class="table-actions">⋯</span>
+                    </div>
+                    <div class="table-row">
+                      <span class="table-name">Refactoring</span>
+                      <span class="table-type">Tool</span>
+                      <span class="table-status status-active">Active</span>
+                      <span class="table-provider">Claude</span>
+                      <span class="table-actions">⋯</span>
+                    </div>
+                    <div class="table-row">
+                      <span class="table-name">Test Writer</span>
+                      <span class="table-type">Agent</span>
+                      <span class="table-status status-pending">Pending</span>
+                      <span class="table-provider">GPT-4</span>
+                      <span class="table-actions">⋯</span>
+                    </div>
+                    <div class="table-row">
+                      <span class="table-name">MCP Bridge</span>
+                      <span class="table-type">Protocol</span>
+                      <span class="table-status status-active">Active</span>
+                      <span class="table-provider">Local</span>
+                      <span class="table-actions">⋯</span>
+                    </div>
+                    <div class="table-row">
+                      <span class="table-name">Context Engine</span>
+                      <span class="table-type">Core</span>
+                      <span class="table-status status-active">Active</span>
+                      <span class="table-provider">Built-in</span>
+                      <span class="table-actions">⋯</span>
+                    </div>
+                    <div class="table-row">
+                      <span class="table-name">Sub-Agent Pool</span>
+                      <span class="table-type">Orchestrator</span>
+                      <span class="table-status status-active">Active</span>
+                      <span class="table-provider">Multi</span>
+                      <span class="table-actions">⋯</span>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="transform-callouts">
-              <div class="callout callout-1">
+
+            <!-- Callouts -->
+            <div class="dashboard-callouts">
+              <div class="callout-item" style="--delay: 0s">
                 <span class="callout-num">01</span>
-                <span class="callout-text">Multi-agent orchestration</span>
+                <span class="callout-label">Multi-agent chat interface</span>
               </div>
-              <div class="callout callout-2">
+              <div class="callout-item" style="--delay: 0.05s">
                 <span class="callout-num">02</span>
-                <span class="callout-text">Semantic context assembly</span>
+                <span class="callout-label">5 concurrent sub-agents</span>
               </div>
-              <div class="callout callout-3">
+              <div class="callout-item" style="--delay: 0.1s">
                 <span class="callout-num">03</span>
-                <span class="callout-text">Real-time status tracking</span>
+                <span class="callout-label">44 extensible AI powers</span>
+              </div>
+              <div class="callout-item" style="--delay: 0.15s">
+                <span class="callout-num">04</span>
+                <span class="callout-label">Visual workflow automation</span>
+              </div>
+              <div class="callout-item" style="--delay: 0.2s">
+                <span class="callout-num">05</span>
+                <span class="callout-label">Persistent context memory</span>
+              </div>
+              <div class="callout-item" style="--delay: 0.25s">
+                <span class="callout-num">06</span>
+                <span class="callout-label">Provider-agnostic settings</span>
+              </div>
+              <div class="callout-item" style="--delay: 0.3s">
+                <span class="callout-num">07</span>
+                <span class="callout-label">MCP protocol integration</span>
+              </div>
+              <div class="callout-item" style="--delay: 0.35s">
+                <span class="callout-num">08</span>
+                <span class="callout-label">Real-time status monitoring</span>
               </div>
             </div>
           </div>
@@ -350,76 +411,66 @@
       </section>
 
       <!-- FAQ -->
-      <section id="faq" class="section-faq" aria-labelledby="faq-heading">
+      <section id="faq" class="section" aria-labelledby="faq-heading">
         <div class="container">
-          <div class="section-header reveal">
-            <p class="section-label">FAQ</p>
-            <h2 id="faq-heading">Questions & Answers</h2>
+          <div class="section-badge-wrapper reveal">
+            <span class="section-badge">FAQ</span>
+            <div class="section-badge-line"></div>
           </div>
+          <h2 id="faq-heading" class="section-title reveal">Questions & Answers</h2>
+
           <div class="faq-list reveal">
-            <div class="faq-item">
-              <button class="faq-question" aria-expanded="false" aria-controls="faq-1">
+            <div class="faq-card">
+              <button class="faq-trigger" aria-expanded="false" aria-controls="faq-1">
                 <span>Is Intellij Lorapok free?</span>
-                <span class="faq-icon" aria-hidden="true">
-                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg>
-                </span>
+                <span class="faq-plus" aria-hidden="true">+</span>
               </button>
-              <div class="faq-answer" id="faq-1" role="region">
+              <div class="faq-content" id="faq-1" role="region">
                 <p>Yes, completely free and open-source under MIT license. You can also use free LLM providers (Groq, Cerebras, Google AI Studio, OpenRouter free tier) for zero-cost AI access.</p>
               </div>
             </div>
-            <div class="faq-item">
-              <button class="faq-question" aria-expanded="false" aria-controls="faq-2">
+            <div class="faq-card">
+              <button class="faq-trigger" aria-expanded="false" aria-controls="faq-2">
                 <span>Which JetBrains IDEs are supported?</span>
-                <span class="faq-icon" aria-hidden="true">
-                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg>
-                </span>
+                <span class="faq-plus" aria-hidden="true">+</span>
               </button>
-              <div class="faq-answer" id="faq-2" role="region">
+              <div class="faq-content" id="faq-2" role="region">
                 <p>All JetBrains IDEs — IntelliJ IDEA, WebStorm, PhpStorm, PyCharm, GoLand, RubyMine, CLion, Rider, Android Studio, and more.</p>
               </div>
             </div>
-            <div class="faq-item">
-              <button class="faq-question" aria-expanded="false" aria-controls="faq-3">
+            <div class="faq-card">
+              <button class="faq-trigger" aria-expanded="false" aria-controls="faq-3">
                 <span>What AI providers are supported?</span>
-                <span class="faq-icon" aria-hidden="true">
-                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg>
-                </span>
+                <span class="faq-plus" aria-hidden="true">+</span>
               </button>
-              <div class="faq-answer" id="faq-3" role="region">
+              <div class="faq-content" id="faq-3" role="region">
                 <p>OpenAI, Anthropic Claude, Google Gemini, OpenRouter, Groq, Mistral, DeepSeek, Ollama (local models), and the Cursor provider. Auto model selection routes to the best model per task.</p>
               </div>
             </div>
-            <div class="faq-item">
-              <button class="faq-question" aria-expanded="false" aria-controls="faq-4">
+            <div class="faq-card">
+              <button class="faq-trigger" aria-expanded="false" aria-controls="faq-4">
                 <span>How does auto model selection work?</span>
-                <span class="faq-icon" aria-hidden="true">
-                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg>
-                </span>
+                <span class="faq-plus" aria-hidden="true">+</span>
               </button>
-              <div class="faq-answer" id="faq-4" role="region">
-                <p>The agent analyzes each task's complexity and routes to the optimal model — fast models for simple tasks, stronger models for complex reasoning, code-specialized models for generation. Automatic fallback if a provider fails.</p>
+              <div class="faq-content" id="faq-4" role="region">
+                <p>The agent analyzes each task's complexity and routes to the optimal model — fast models for simple tasks, stronger models for complex reasoning, code-specialized models for generation.</p>
               </div>
             </div>
-            <div class="faq-item">
-              <button class="faq-question" aria-expanded="false" aria-controls="faq-5">
+            <div class="faq-card">
+              <button class="faq-trigger" aria-expanded="false" aria-controls="faq-5">
                 <span>Can I use local models?</span>
-                <span class="faq-icon" aria-hidden="true">
-                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg>
-                </span>
+                <span class="faq-plus" aria-hidden="true">+</span>
               </button>
-              <div class="faq-answer" id="faq-5" role="region">
+              <div class="faq-content" id="faq-5" role="region">
                 <p>Yes, via Ollama integration. Run models like Llama, Mistral, CodeLlama, or Qwen locally with full privacy — your code never leaves your machine.</p>
               </div>
             </div>
-            <div class="faq-item">
-              <button class="faq-question" aria-expanded="false" aria-controls="faq-6">
+            <div class="faq-card">
+              <button class="faq-trigger" aria-expanded="false" aria-controls="faq-6">
                 <span>What is MCP Protocol?</span>
-                <span class="faq-icon" aria-hidden="true">
-                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg>
-                </span>
+                <span class="faq-plus" aria-hidden="true">+</span>
               </button>
-              <div class="faq-answer" id="faq-6" role="region">
+              <div class="faq-content" id="faq-6" role="region">
                 <p>Model Context Protocol is a standard for AI tool integration. Lorapok exposes your IDE as an MCP server and connects to external MCP tools — giving the agent access to databases, APIs, documentation, and custom tools.</p>
               </div>
             </div>
@@ -429,58 +480,42 @@
 
       <!-- CTA -->
       <section class="section-cta" aria-labelledby="cta-heading">
-        <div class="container">
-          <div class="cta-content reveal">
-            <h2 id="cta-heading">Your code deserves an AI partner you can trust.</h2>
-            <p class="cta-sub">Open-source. Multi-provider. Alive.</p>
-            <div class="cta-buttons">
-              <a href="https://plugins.jetbrains.com/vendor/lorapok-labs" class="btn btn-primary" target="_blank" rel="noopener">Get the Plugin</a>
-              <a href="https://github.com/Maijied/Intellij-Lorapok" class="btn btn-outline" target="_blank" rel="noopener">View on GitHub</a>
-            </div>
+        <div class="cta-bg" aria-hidden="true">
+          <div class="matrix-rain"></div>
+          <div class="cta-gradient"></div>
+          <div class="floating-symbols">
+            <span class="symbol sym-1">{</span>
+            <span class="symbol sym-2">}</span>
+            <span class="symbol sym-3">;</span>
+            <span class="symbol sym-4">//</span>
+            <span class="symbol sym-5">→</span>
+            <span class="symbol sym-6">λ</span>
+            <span class="symbol sym-7">⟨⟩</span>
+            <span class="symbol sym-8">[]</span>
           </div>
+        </div>
+        <div class="cta-content reveal">
+          <h2 id="cta-heading">Your code deserves an AI partner you can trust</h2>
+          <p class="cta-sub">Deploy with certainty, scale without hesitation</p>
+          <a href="https://lorapok.github.io/#contact" class="cta-button" target="_blank" rel="noopener">Contact</a>
         </div>
       </section>
     </main>
 
     <!-- Footer -->
     <footer class="site-footer" role="contentinfo">
-      <div class="container">
-        <div class="footer-top">
-          <div class="footer-brand">
-            <img src="assets/logo.svg" alt="Lorapok Labs" width="100" height="24" loading="lazy">
-            <p>Open-source AI agent IDE for JetBrains.</p>
-          </div>
-          <div class="footer-links-grid">
-            <div class="footer-col">
-              <h4>Product</h4>
-              <ul>
-                <li><a href="#solution">Solution</a></li>
-                <li><a href="#how-it-works">How it Works</a></li>
-                <li><a href="#faq">FAQ</a></li>
-                <li><a href="https://plugins.jetbrains.com/vendor/lorapok-labs" target="_blank" rel="noopener">Marketplace</a></li>
-              </ul>
-            </div>
-            <div class="footer-col">
-              <h4>Community</h4>
-              <ul>
-                <li><a href="https://github.com/Maijied/Intellij-Lorapok" target="_blank" rel="noopener">GitHub</a></li>
-                <li><a href="https://lorapok.github.io/#contact" target="_blank" rel="noopener">Contact</a></li>
-                <li><a href="mailto:Lorapokdev@gmail.com">Lorapokdev@gmail.com</a></li>
-              </ul>
-            </div>
-            <div class="footer-col">
-              <h4>About</h4>
-              <ul>
-                <li><a href="https://lorapok.github.io/" target="_blank" rel="noopener">Lorapok Labs</a></li>
-                <li><a href="https://maijied.github.io/Maijied/" target="_blank" rel="noopener">Author</a></li>
-              </ul>
-            </div>
-          </div>
+      <div class="footer-inner">
+        <div class="footer-links">
+          <a href="https://lorapok.github.io/" target="_blank" rel="noopener">→ About</a>
+          <a href="https://lorapok.github.io/#contact" target="_blank" rel="noopener">→ Contact</a>
+          <a href="#">→ Terms and Conditions</a>
+          <a href="#">→ Privacy Policy</a>
         </div>
-        <div class="footer-bottom">
-          <p>&copy; 2025 Lorapok Labs. Open-source under MIT License.</p>
+        <div class="footer-copyright">
+          <p>© 2025 Lorapok Labs. MIT License.</p>
         </div>
       </div>
+      <div class="footer-giant-text" aria-hidden="true">LORAPOK</div>
     </footer>
 
   </div><!-- /.site-content -->
