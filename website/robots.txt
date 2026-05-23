@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://maijied.github.io/Intellij-Lorapok/sitemap.xml

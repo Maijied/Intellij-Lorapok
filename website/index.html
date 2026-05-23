@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Intellij Lorapok — AI Agent IDE for JetBrains</title>
+  <meta name="description" content="Open-source AI coding agent with multi-provider support, MCP protocol, sub-agent orchestration, and 44 AI powers for JetBrains IDEs. Free, extensible, alive.">
+  <meta name="author" content="Maizied Hasan">
+  <meta name="keywords" content="AI IDE, JetBrains plugin, AI coding agent, MCP protocol, open source, IntelliJ, AI assistant, Lorapok, multi-provider, sub-agents">
+  <link rel="canonical" href="https://maijied.github.io/Intellij-Lorapok/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Intellij Lorapok — AI Agent IDE for JetBrains">
+  <meta property="og:description" content="Open-source AI coding agent with multi-provider support, MCP protocol, and 44 AI powers.">
+  <meta property="og:url" content="https://maijied.github.io/Intellij-Lorapok/">
+  <meta property="og:image" content="https://maijied.github.io/Intellij-Lorapok/assets/og-image.png">
+  <meta property="og:site_name" content="Lorapok Labs">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Intellij Lorapok — AI Agent IDE for JetBrains">
+  <meta name="twitter:description" content="Open-source AI coding agent with multi-provider support, MCP protocol, and 44 AI powers.">
+  <meta name="twitter:image" content="https://maijied.github.io/Intellij-Lorapok/assets/og-image.png">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Intellij Lorapok",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Windows, macOS, Linux",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "author": {
+      "@type": "Organization",
+      "name": "Lorapok Labs",
+      "url": "https://lorapok.github.io/"
+    },
+    "url": "https://maijied.github.io/Intellij-Lorapok/",
+    "downloadUrl": "https://plugins.jetbrains.com/vendor/lorapok-labs",
+    "softwareVersion": "1.0",
+    "description": "Open-source AI coding agent with multi-provider support, MCP protocol, and 44 AI powers for JetBrains IDEs"
+  }
+  </script>
+
+  <!-- Preconnect to font origins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Critical above-fold CSS -->
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', system-ui, sans-serif; background: #0a0a0f; color: #f0f0f5; min-height: 100vh; }
+    .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; }
+    .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 2rem; }
+    .hero h1 { font-size: clamp(3rem, 8vw, 6rem); font-weight: 900; line-height: 1.1; letter-spacing: -0.02em; }
+  </style>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <!-- Favicon -->
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+
+  <!-- Noscript styles -->
+  <noscript>
+    <style>
+      .reveal { opacity: 1 !important; transform: none !important; }
+      .reveal-stagger > * { opacity: 1 !important; transform: none !important; }
+      .faq-answer { max-height: none !important; overflow: visible !important; padding: 1rem 0 !important; }
+    </style>
+  </noscript>
+</head>
+<body>
+  <!-- Skip to content -->
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <!-- Navigation -->
+  <header class="nav" role="banner">
+    <a href="#" class="nav-logo" aria-label="Lorapok home">
+      <img src="assets/logo.svg" alt="Lorapok" width="140" height="32">
+    </a>
+    <nav role="navigation" aria-label="Main navigation">
+      <ul class="nav-links">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#how-it-works">How it Works</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#community">Community</a></li>
+      </ul>
+    </nav>
+    <a href="https://plugins.jetbrains.com/vendor/lorapok-labs" class="btn btn-primary btn-sm" target="_blank" rel="noopener">Get Plugin</a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <main id="main">
+    <!-- Hero Section -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <p class="hero-eyebrow mono">Open-Source AI Agent IDE</p>
+      <h1 id="hero-heading">The AI That Codes<br><span class="text-neon">With You</span></h1>
+      <p class="hero-sub">Multi-provider AI coding agent with sub-agent orchestration, MCP protocol, and 44 AI powers for JetBrains IDEs. Free. Extensible. Alive.</p>
+      <div class="hero-cta">
+        <a href="https://plugins.jetbrains.com/vendor/lorapok-labs" class="btn btn-primary btn-glow" target="_blank" rel="noopener">Install from Marketplace</a>
+        <a href="https://github.com/Maijied/Intellij-Lorapok" class="btn btn-ghost" target="_blank" rel="noopener">View on GitHub</a>
+      </div>
+    </section>
+
+    <!-- Stats Marquee -->
+    <section class="stats-marquee" aria-label="Key capabilities">
+      <div class="marquee-track">
+        <div class="badge">44 AI Powers</div>
+        <div class="badge">Multi-Agent Orchestration</div>
+        <div class="badge">MCP Protocol</div>
+        <div class="badge">Free LLM Access</div>
+        <div class="badge">n8n-Style Workflows</div>
+        <div class="badge">OpenClaw Integration</div>
+        <div class="badge">AWS &amp; Azure Knowledge</div>
+        <div class="badge">AI Collaboration Hub</div>
+        <!-- Duplicated for seamless loop -->
+        <div class="badge">44 AI Powers</div>
+        <div class="badge">Multi-Agent Orchestration</div>
+        <div class="badge">MCP Protocol</div>
+        <div class="badge">Free LLM Access</div>
+        <div class="badge">n8n-Style Workflows</div>
+        <div class="badge">OpenClaw Integration</div>
+        <div class="badge">AWS &amp; Azure Knowledge</div>
+        <div class="badge">AI Collaboration Hub</div>
+      </div>
+    </section>
+
+    <!-- Mission -->
+    <section class="section-mission reveal" aria-labelledby="mission-heading">
+      <div class="container text-center section-header">
+        <p class="section-label mono">The Mission</p>
+        <h2 id="mission-heading">Making AI coding accessible, open, and alive</h2>
+        <p>Every developer deserves a powerful AI coding partner — not locked behind expensive subscriptions or closed ecosystems. Lorapok brings the full power of modern AI agents to your JetBrains IDE, for free.</p>
+      </div>
+    </section>
+
+    <!-- Problem -->
+    <section class="section-problem reveal" aria-labelledby="problem-heading">
+      <div class="container">
+        <div class="section-header text-center">
+          <p class="section-label mono">The Problem</p>
+          <h2 id="problem-heading">AI IDEs are holding developers back</h2>
+        </div>
+        <div class="grid-3 reveal-stagger">
+          <div class="glass-card">
+            <h3>Closed Ecosystems</h3>
+            <p>Most AI coding tools lock you into a single provider with no escape hatch. Your workflow depends on one company's decisions.</p>
+          </div>
+          <div class="glass-card">
+            <h3>Expensive Access</h3>
+            <p>Premium AI features cost $20-50/month per developer. Teams pay thousands for capabilities that should be accessible to everyone.</p>
+          </div>
+          <div class="glass-card">
+            <h3>Limited Extensibility</h3>
+            <p>No MCP support, no custom tools, no workflow automation. You get what they ship — nothing more.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Solution -->
+    <section class="section-solution reveal" aria-labelledby="solution-heading">
+      <div class="container text-center section-header">
+        <p class="section-label mono">The Solution</p>
+        <h2 id="solution-heading">That's why we built <span class="text-neon">Intellij Lorapok</span></h2>
+        <p>An open-source AI agent IDE that brings multi-provider intelligence, sub-agent orchestration, and extensible powers to every JetBrains IDE — at zero cost.</p>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="section-features reveal" aria-labelledby="features-heading">
+      <div class="container">
+        <div class="section-header text-center">
+          <p class="section-label mono">Features</p>
+          <h2 id="features-heading">Everything an AI IDE should have</h2>
+        </div>
+        <div class="grid-3 reveal-stagger">
+          <div class="glass-card feature-card">
+            <div class="feature-icon" aria-hidden="true">🤖</div>
+            <h3>Sub-Agent Orchestration</h3>
+            <p>Decompose complex tasks into parallel sub-agents. Up to 5 concurrent agents working on your code simultaneously.</p>
+          </div>
+          <div class="glass-card feature-card">
+            <div class="feature-icon" aria-hidden="true">🔌</div>
+            <h3>MCP Protocol</h3>
+            <p>Full Model Context Protocol support. Expose your IDE as an MCP server and connect to external MCP tools.</p>
+          </div>
+          <div class="glass-card feature-card">
+            <div class="feature-icon" aria-hidden="true">⚡</div>
+            <h3>Workflow Engine</h3>
+            <p>n8n-style visual automation. Chain triggers, actions, conditions, and AI nodes into reusable pipelines.</p>
+          </div>
+          <div class="glass-card feature-card">
+            <div class="feature-icon" aria-hidden="true">🧠</div>
+            <h3>44 AI Powers</h3>
+            <p>Code generation, refactoring, debugging, testing, documentation, git, web search, media generation, and more.</p>
+          </div>
+          <div class="glass-card feature-card">
+            <div class="feature-icon" aria-hidden="true">☁️</div>
+            <h3>Cloud Knowledge</h3>
+            <p>Deep AWS and Azure expertise built in. Architecture design, IaC generation, cost optimization, security review.</p>
+          </div>
+          <div class="glass-card feature-card">
+            <div class="feature-icon" aria-hidden="true">🤝</div>
+            <h3>AI Collaboration</h3>
+            <p>Connect multiple AI agents. Round-table discussions, second opinions, and parallel problem-solving across AIs.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="section-how reveal" aria-labelledby="how-heading">
+      <div class="container">
+        <div class="section-header text-center">
+          <p class="section-label mono">How It Works</p>
+          <h2 id="how-heading">Up and running in 3 steps</h2>
+        </div>
+        <div class="grid-3 reveal-stagger">
+          <div class="glass-card step-card">
+            <span class="step-number mono">01</span>
+            <h3>Install the Plugin</h3>
+            <p>Get Intellij Lorapok from the JetBrains Marketplace. Works with all JetBrains IDEs.</p>
+          </div>
+          <div class="glass-card step-card">
+            <span class="step-number mono">02</span>
+            <h3>Configure Providers</h3>
+            <p>Add your API keys — or use free providers. Supports OpenAI, Anthropic, Gemini, Groq, Mistral, Ollama, and more.</p>
+          </div>
+          <div class="glass-card step-card">
+            <span class="step-number mono">03</span>
+            <h3>Start Coding with AI</h3>
+            <p>Open the Lorapok panel and start asking. The agent handles the rest — sub-agents, tools, context, and code.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Open Source CTA -->
+    <section id="community" class="section-cta reveal" aria-labelledby="cta-heading">
+      <div class="container text-center">
+        <p class="section-label mono">Open Source</p>
+        <h2 id="cta-heading">Built in the open. Join us.</h2>
+        <p>Lorapok is open-source and community-driven. Contribute code, report issues, suggest features, or just star the repo. Every contribution makes AI coding better for everyone.</p>
+        <div class="cta-buttons">
+          <a href="https://github.com/Maijied/Intellij-Lorapok" class="btn btn-primary btn-glow" target="_blank" rel="noopener">Star on GitHub</a>
+          <a href="https://lorapok.github.io/#contact" class="btn btn-ghost" target="_blank" rel="noopener">Join the Community</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section-faq reveal" aria-labelledby="faq-heading">
+      <div class="container">
+        <div class="section-header text-center">
+          <p class="section-label mono">FAQ</p>
+          <h2 id="faq-heading">Your questions, answered</h2>
+        </div>
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-1">
+              <span>Is Intellij Lorapok free?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" id="faq-1" role="region">
+              <p>Yes, completely free and open-source under MIT license. You can also use free LLM providers (Groq, Cerebras, Google AI Studio, OpenRouter free tier) for zero-cost AI access.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-2">
+              <span>Which JetBrains IDEs are supported?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" id="faq-2" role="region">
+              <p>All JetBrains IDEs — IntelliJ IDEA, WebStorm, PhpStorm, PyCharm, GoLand, RubyMine, CLion, Rider, Android Studio, and more.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-3">
+              <span>What AI providers are supported?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" id="faq-3" role="region">
+              <p>OpenAI, Anthropic Claude, Google Gemini, OpenRouter, Groq, Mistral, DeepSeek, Ollama (local models), and the Cursor provider. Auto model selection routes to the best model per task.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-4">
+              <span>How does auto model selection work?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" id="faq-4" role="region">
+              <p>The agent analyzes each task's complexity and routes to the optimal model — fast models for simple tasks, stronger models for complex reasoning, code-specialized models for generation. Automatic fallback if a provider fails.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-5">
+              <span>Can I use local models?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" id="faq-5" role="region">
+              <p>Yes, via Ollama integration. Run models like Llama, Mistral, CodeLlama, or Qwen locally with full privacy — your code never leaves your machine.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-6">
+              <span>What is MCP Protocol?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" id="faq-6" role="region">
+              <p>Model Context Protocol is a standard for AI tool integration. Lorapok exposes your IDE as an MCP server and connects to external MCP tools — giving the agent access to databases, APIs, documentation, and custom tools.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="assets/logo.svg" alt="Lorapok Labs" width="120" height="28" loading="lazy">
+          <p>Open-source AI agent IDE for JetBrains. Built by <a href="https://lorapok.github.io/" target="_blank" rel="noopener">Lorapok Labs</a>.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Product</h4>
+          <ul>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#how-it-works">How it Works</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="https://plugins.jetbrains.com/vendor/lorapok-labs" target="_blank" rel="noopener">Marketplace</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="https://github.com/Maijied/Intellij-Lorapok" target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href="https://lorapok.github.io/#contact" target="_blank" rel="noopener">Join Us</a></li>
+            <li><a href="mailto:Lorapokdev@gmail.com">Lorapokdev@gmail.com</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>About</h4>
+          <ul>
+            <li><a href="https://lorapok.github.io/" target="_blank" rel="noopener">Lorapok Labs</a></li>
+            <li><a href="https://maijied.github.io/Maijied/" target="_blank" rel="noopener">Author</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Lorapok Labs. Open-source under MIT License.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>
